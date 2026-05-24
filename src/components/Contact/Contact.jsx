@@ -24,10 +24,10 @@ function Contact() {
 
     // Your actual EmailJS IDs are plugged in here
     emailjs.send(
-      'service_mi2kb6p', 
-      'template_9d5l5am', 
-      templateParams, 
-      'F454m4zofAMIDLrgH'
+      IMPORT.meta.env.VITE_EMAILL_JS_SERVICE_ID,
+      IMPORT.meta.env.VITE_EMAILL_JS_TEMPLATE_ID,
+      templateParams,
+      IMPORT.meta.env.VITE_PUBLIC_KEY
     )
     .then((response) => {
       setStatus('Message sent successfully!');
