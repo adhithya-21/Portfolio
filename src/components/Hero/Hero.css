@@ -1,0 +1,89 @@
+.hero-section {
+  padding-top: 2rem;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 1fr);
+  gap: 2rem;
+  align-items: center;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.hero-copy h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 0.95;
+}
+
+.hero-description {
+  margin: 1.5rem 0;
+  max-width: 34rem;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: nowrap;
+}
+
+@media (max-width: 680px) {
+  .hero-buttons {
+    flex-wrap: wrap;
+  }
+}
+
+.hero-panel {
+  padding: 2rem;
+  display: grid;
+  gap: 0.2rem;
+}
+
+.hero-profile {
+  display: none;
+}
+
+.profile-ring {
+  display: none;
+}
+
+.profile-avatar {
+  display: none;
+}
+
+.profile-image {
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-details p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.hero-role {
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+}

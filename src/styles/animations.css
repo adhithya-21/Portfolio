@@ -1,0 +1,31 @@
+.loader {
+  display: inline-flex;
+  gap: 0.5rem;
+}
+
+.loader div {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--accent);
+  animation: pulse 0.8s infinite ease-in-out;
+}
+
+.loader div:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.loader div:nth-child(3) {
+  animation-delay: 0.24s;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 1;
+  }
+}

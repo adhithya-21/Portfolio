@@ -1,0 +1,102 @@
+.timeline-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: stretch; 
+}
+
+.timeline-block h3, 
+.timeline-block h2 {
+  margin: 0 0 0.5rem;
+}
+
+.timeline-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: 100%;
+}
+
+/* --- CHANGED TO WHITE BACKGROUND --- */
+.timeline-item.card {
+  padding: 1.5rem;
+  min-height: 240px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.4rem;
+  flex-grow: 1; 
+  
+  background-color: #ffffff; /* Pure white background */
+  color: #333333; /* Dark text so it is readable on white */
+  border-radius: 12px; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Optional: adds a soft shadow so white cards pop */
+}
+
+.timeline-item h4 {
+  margin: 0 0 0.3rem;
+  color: #111111; /* Darker heading */
+}
+
+.timeline-company {
+  margin: 0;
+  color: var(--accent, #0056b3); /* Keeps your accent color */
+  font-weight: 600;
+}
+
+.timeline-timeframe {
+  margin: 0 0 0.5rem;
+  color: #666666; /* Medium gray for the date */
+  font-size: 0.9rem;
+}
+
+.timeline-item p {
+  line-height: 1.5;
+}
+
+/* --- SCROLLBAR STYLES --- */
+.scroll-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow-y: auto;
+  max-height: 530px; 
+  padding-right: 10px; 
+}
+
+.scroll-container .timeline-item.card {
+  flex: none;
+}
+
+.scroll-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background-color: rgba(150, 150, 150, 0.4); 
+  border-radius: 10px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(150, 150, 150, 0.7);
+}
+
+@media (max-width: 900px) {
+  .timeline-grid {
+    grid-template-columns: 1fr;
+  }
+  .timeline-item.card {
+    min-height: auto;
+    height: auto;
+    flex: none; 
+  }
+  .scroll-container {
+    max-height: none;
+    overflow-y: visible;
+    padding-right: 0;
+  }
+}

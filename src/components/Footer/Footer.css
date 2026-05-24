@@ -1,0 +1,72 @@
+.footer-section {
+  border-top: 1px solid var(--border);
+  padding: 2.5rem 0;
+  margin-top: 4rem; /* Gives breathing room between the page content and the footer */
+}
+
+/* Assuming you have a global .container class for max-width, if not, this sets the bounds */
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.footer-copyright p {
+  margin: 0;
+  color: var(--muted, #888); /* Uses your variable, or falls back to a soft gray */
+  font-size: 0.95rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.footer-links a {
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px; /* Creates the professional "pill" shape */
+  border: 1px solid transparent;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-links a:hover {
+  background: var(--surface);
+  border-color: var(--border);
+  transform: translateY(-2px); /* Subtle lift effect on hover */
+}
+
+.footer-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+  .footer-inner {
+    flex-direction: column-reverse; /* Puts copyright on the bottom for mobile */
+    gap: 1.5rem;
+    text-align: center;
+  }
+  
+  .link-text {
+    display: none; /* Hides the text on mobile for a cleaner, icon-only look */
+  }
+  
+  .footer-links a {
+    padding: 0.75rem; /* Makes the tap target larger for thumbs */
+    border-radius: 50%; /* Makes them perfect circles if text is hidden */
+  }
+}
