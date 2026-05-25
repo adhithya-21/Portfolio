@@ -6,7 +6,7 @@ function Experience() {
   return (
     <section id="education" className="experience-section">
       <div className="container">
-         <h1 className="section-title"><h>Educational Background</h></h1>
+         <h1 className="section-title"><h1>Educational Background</h1></h1>
          <h2>My academic background and professional qualifications.</h2>
          
         <div className="timeline-grid">
