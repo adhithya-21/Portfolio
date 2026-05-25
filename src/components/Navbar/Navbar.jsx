@@ -4,7 +4,10 @@ function Navbar({ theme, onToggleTheme, resumeLink, socialLinks }) {
   return (
     <header className="navbar">
       <div className="navbar-inner container">
-        <a className="brand" href="#home"><h1>Adhithya</h1></a>
+        <a className="brand" href="#home" role="img" aria-label="Adhithya Logo">
+          <div className="brand-logo-circle"> </div>
+           <div> <h1>Adhithya</h1></div>
+        </a>
         <div className="nav-actions">
           <nav className="nav-links">
             <a href="#about">About</a>

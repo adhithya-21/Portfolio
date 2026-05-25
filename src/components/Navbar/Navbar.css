@@ -1,44 +1,86 @@
+:root {
+  --muted: #64748b;
+  --text: #0f172a;
+  --border: rgba(15, 23, 42, 0.06);
+  --accent: #b2935e; /* Logo bronze-gold trim */
+  --navbar-bg: rgba(247, 248, 252, 0.88);
+  --toggle-bg: var(--accent);
+  --toggle-color: white;
+  --toggle-shadow: rgba(178, 147, 94, 0.18);
+}
+
+[data-theme='dark'] :root {
+  --muted: #94a3b8;
+  --text: #f1f5f9;
+  --border: rgba(255, 255, 255, 0.06);
+  --navbar-bg: rgba(18, 24, 40, 0.92); /* Deeper dark, slightly warmer */
+  --accent: #cdac6e; /* Lighter gold for borders/accents */
+  --toggle-bg: #1e2439; /* Dark charcoal blue for toggle, matches logo background field */
+  --toggle-color: #f1f5f9; /* Contrast with dark blue button */
+  --toggle-shadow: rgba(255, 255, 255, 0.05);
+}
+
 .navbar {
   position: sticky;
   top: 0;
   z-index: 50;
   backdrop-filter: blur(16px);
-  background: rgba(247, 248, 252, 0.8);
-  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
-}
-
-[data-theme='dark'] .navbar {
-  background: rgba(7, 11, 26, 0.88);
+  background: var(--navbar-bg);
+  border-bottom: 1px solid var(--border);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .navbar-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  padding: 1rem 0;
+  padding: 1.25rem 0; /* Increased padding for a more premium feel */
 }
 
 .brand {
-  margin-left: 8px;
-  font-size: 1.45rem;
-  font-weight: 800;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 }
 
-.brand h1 {
-  margin: 0;
-  font-size: inherit;
+/* Style to make the logo perfect circular with a metal-like border */
+.brand-logo-circle {
+  width: 100px; /* Size to match the toggle button */
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden; /* Crop any image outside the circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--accent); /* Bronze-gold border for all themes */
+  box-shadow: 0 0 12px rgba(178, 147, 94, 0.2); /* Subtle glow on light theme */
+  /* Place the complete circular badge image inside the HTML circle and crop paper background */
+  background-image: url("/images/Adhithya.png");
+  background-position: center;
+  background-size: cover; /* Fill the div, relying on the badge being a perfect circle and aligning perfectly to hide paper background */
+  background-repeat: no-repeat;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Theme-specific adjustments for the circle border and shadow for contrast */
+[data-theme='light'] .brand-logo-circle {
+  box-shadow: 0 0 12px rgba(178, 147, 94, 0.2); /* Light bronze glow */
+}
+
+[data-theme='dark'] .brand-logo-circle {
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.05); /* Soft light glow for dark mode */
 }
 
 .nav-links {
   display: flex;
-  gap: 1.25rem;
   align-items: center;
+  gap: 1.5rem; /* Increased gap slightly */
 }
 
 .nav-links a {
   color: var(--muted);
   font-weight: 600;
+  text-decoration: none;
   transition: color 0.2s ease;
 }
 
@@ -52,29 +94,6 @@
   gap: 1rem;
 }
 
-.nav-links {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-
-.nav-links a {
-  color: var(--muted);
-  font-weight: 600;
-  transition: color 0.2s ease;
-}
-
-.nav-links a:hover {
-  color: var(--text);
-}
-
-.resume-link {
-  padding: 0.75rem 1rem;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  color: var(--text);
-}
-
 .theme-toggle {
   display: inline-flex;
   align-items: center;
@@ -82,39 +101,52 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: var(--accent);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 8px 24px rgba(79, 70, 229, 0.18);
-  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.15); /* Keep soft white border */
+  background: var(--toggle-bg);
+  color: var(--toggle-color);
+  box-shadow: 0 8px 24px var(--toggle-shadow);
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
 }
 
 .theme-toggle:hover,
 .theme-toggle:focus-visible {
   transform: translateY(-1px);
-  background: #5728ff;
-  box-shadow: 0 10px 28px rgba(79, 70, 229, 0.28);
   outline: none;
 }
 
+/* Hover colors aligned to the new bronze/charcoal blue palette */
+[data-theme='light'] .theme-toggle:hover {
+  background: #cdac6e; /* Hover darker gold */
+  box-shadow: 0 10px 28px rgba(178, 147, 94, 0.28);
+}
+
+[data-theme='dark'] .theme-toggle:hover {
+  background: #282e4f; /* Hover warmer charcoal blue */
+  box-shadow: 0 10px 28px rgba(255, 255, 255, 0.1);
+}
+
+/* Focus styles using --border for a clean look */
 .theme-toggle:focus-visible {
-  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
+  box-shadow: 0 0 0 4px var(--border);
 }
 
 @media (max-width: 900px) {
   .navbar-inner {
     flex-wrap: wrap;
+    justify-content: center; /* Center-align for mobile */
+    padding: 1rem 0; /* Reduce padding slightly */
   }
 
   .nav-actions {
     width: 100%;
-    justify-content: space-between;
+    justify-content: center; /* Center-align the nav links and button */
     flex-wrap: wrap;
+    margin-top: 0.5rem; /* Space from the logo */
   }
 
   .nav-links {
-    flex-wrap: wrap;
-    gap: 0.75rem;
+    width: 100%;
     justify-content: center;
+    gap: 0.75rem;
   }
 }

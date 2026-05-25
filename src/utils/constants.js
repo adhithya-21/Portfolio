@@ -5,4 +5,4 @@ export const socialLinks = {
   twitter: 'https://twitter.com/yourprofile',
 };
 
-export const resumeLink = '/resume/resume.pdf';
+export const resumeLink = 'resume/Adhithya_Jayawardhana_Software_Engineer_CV.pdf';
