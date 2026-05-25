@@ -1,16 +1,74 @@
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.5rem;
+/* =========================================
+   Projects Horizontal Slider (Container)
+   ========================================= */
+.projects-slider {
+  display: flex;
+  gap: 1.5rem; 
   margin-bottom: 2rem;
+  
+  /* Enables horizontal scrolling */
+  overflow-x: auto; 
+  
+  /* Padding fixes: 0.5rem top stops the hover effect from clipping. 
+     1.5rem bottom gives room for the scrollbar. */
+  padding-top: 0.5rem; 
+  padding-bottom: 1.5rem; 
+  
+  /* Makes scrolling smooth and snap to the cards */
+  scroll-snap-type: x mandatory; 
+  scroll-behavior: smooth;
 }
 
+/* Custom Scrollbar Styling (Optional but recommended) */
+.projects-slider::-webkit-scrollbar {
+  height: 8px;
+}
+.projects-slider::-webkit-scrollbar-track {
+  background: var(--border); 
+  border-radius: 8px;
+}
+.projects-slider::-webkit-scrollbar-thumb {
+  background: var(--accent); 
+  border-radius: 8px;
+}
+
+/* =========================================
+   Project Cards
+   ========================================= */
 .project-card {
   padding: 1.5rem;
   display: grid;
   gap: 1rem;
+  
+  /* Math: 100% width minus the two 1.5rem gaps, divided by exactly 3 cards */
+  flex: 0 0 calc((100% - 3rem) / 3); 
+  
+  scroll-snap-align: start; 
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  
+  /* Includes box-shadow for the touch-screen outline fix */
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  
+  /* Stops mobile devices from showing the ugly gray tap-box */
+  -webkit-tap-highlight-color: transparent; 
 }
 
+/* Hover, Active, and Focus states for perfect interaction */
+.project-card:hover,
+.project-card:active,
+.project-card:focus-within {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  
+  /* Creates a perfect glowing outline that wraps the rounded corners */
+  box-shadow: 0 0 0 1px var(--accent); 
+  outline: none; /* Kills default square browser outlines */
+}
+
+/* =========================================
+   Card Typography & Content
+   ========================================= */
 .project-card h3 {
   margin: 0;
 }
@@ -21,55 +79,54 @@
   gap: 0.75rem;
 }
 
+/* =========================================
+   Links & Animated SVG Arrow
+   ========================================= */
 .project-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.5rem; /* Slightly larger gap between different links */
 }
 
 .project-links a {
   color: var(--accent);
   font-weight: 600;
+  text-decoration: none;
+  
+  /* Flexbox to perfectly align the text and the SVG arrow */
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem; 
 }
 
-.blog-block {
-  padding: 1.5rem;
-}
-
-.blog-list {
-  display: grid;
-  gap: 1rem;
-}
-
-.blog-item {
-  display: block;
-  padding: 1rem;
-  border: 1px solid var(--border);
-  border-radius: 18px;
+/* Base styling for the inline SVG arrow */
+.link-arrow {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
   transition: transform 0.2s ease;
 }
 
-.blog-item:hover {
-  transform: translateY(-2px);
+/* Makes the arrow smoothly slide to the right when you hover the link */
+.project-links a:hover .link-arrow {
+  transform: translateX(3px);
 }
 
-.blog-item span {
-  font-weight: 700;
-}
-
-.blog-item p {
-  margin: 0.5rem 0 0;
-  color: var(--muted);
-}
-
-@media (max-width: 1020px) {
-  .projects-grid {
-    grid-template-columns: 1fr 1fr;
+/* =========================================
+   Responsive Design Breakpoints
+   ========================================= */
+/* Tablet & Small Laptops */
+@media (max-width: 1024px) {
+  .project-card {
+    /* Math: 100% width minus one 1.5rem gap, divided by exactly 2 cards */
+    flex: 0 0 calc((100% - 1.5rem) / 2); 
   }
 }
 
+/* Mobile Phones */
 @media (max-width: 760px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
+  .project-card {
+    /* Shows 1 card, but takes up 85% width so the next card peeks in */
+    flex: 0 0 85vw; 
   }
 }

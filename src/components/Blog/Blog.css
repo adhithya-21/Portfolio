@@ -1,37 +1,75 @@
+/* =========================================
+   Blog Horizontal Slider (Container)
+   ========================================= */
 .blog-grid {
   display: flex;
   gap: 1.5rem;
+  
+  /* Enables horizontal scrolling */
   overflow-x: auto;
-  padding-bottom: 1rem;
+  
+  /* Padding fixes: 0.5rem top stops the hover effect from clipping. 
+     1.5rem bottom gives room for the scrollbar. */
+  padding-top: 0.5rem; 
+  padding-bottom: 1.5rem;
+  
+  /* Makes scrolling smooth and snap to the cards */
   scroll-behavior: smooth;
+  scroll-snap-type: x mandatory; 
 }
 
+/* Custom Scrollbar Styling */
 .blog-grid::-webkit-scrollbar {
   height: 6px;
 }
-
 .blog-grid::-webkit-scrollbar-track {
   background: var(--surface);
   border-radius: 999px;
 }
-
 .blog-grid::-webkit-scrollbar-thumb {
   background: var(--accent);
   border-radius: 999px;
 }
 
+/* =========================================
+   Blog Cards
+   ========================================= */
 .blog-card {
-  flex: 0 0 350px;
+  /* MATH: 100% width minus the two 1.5rem gaps, divided by exactly 3 cards */
+  flex: 0 0 calc((100% - 3rem) / 3); 
+  
+  scroll-snap-align: start; 
   padding: 1.5rem;
   display: grid;
   gap: 1rem;
-  transition: transform 0.2s ease, border-color 0.2s ease;
   position: relative;
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: 24px;
+  text-decoration: none; /* Removes the underline from the whole card link */
+  
+  /* Includes box-shadow for the touch-screen outline fix */
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  
+  /* Stops mobile devices from flashing a gray tap-box */
+  -webkit-tap-highlight-color: transparent; 
 }
 
+/* Hover, Active, and Focus states for perfect interaction */
+.blog-card:hover,
+.blog-card:active,
+.blog-card:focus-within {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  
+  /* Creates a perfect glowing outline that respects the border-radius */
+  box-shadow: 0 0 0 1px var(--accent); 
+  outline: none; /* Kills default square browser outlines */
+}
+
+/* =========================================
+   Animated Top Accent Line
+   ========================================= */
 .blog-card::before {
   position: absolute;
   top: 12px;
@@ -47,17 +85,16 @@
   font-size: 0.7rem;
   font-weight: 700;
   color: rgb(187, 171, 171);
+  content: ""; /* Required for pseudo-elements to render */
 }
 
 .blog-card:hover::before {
   right: 0;
 }
 
-.blog-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent);
-}
-
+/* =========================================
+   Typography & Content
+   ========================================= */
 .blog-card h3 {
   margin: 0;
   color: var(--text);
@@ -75,14 +112,21 @@
   font-weight: 700;
 }
 
-@media (max-width: 1020px) {
+/* =========================================
+   Responsive Design Breakpoints
+   ========================================= */
+/* Tablet & Small Laptops */
+@media (max-width: 1024px) {
   .blog-card {
-    flex: 0 0 300px;
+    /* MATH: 100% width minus one 1.5rem gap, divided by exactly 2 cards */
+    flex: 0 0 calc((100% - 1.5rem) / 2); 
   }
 }
 
-@media (max-width: 720px) {
+/* Mobile Phones */
+@media (max-width: 760px) {
   .blog-card {
-    flex: 0 0 280px;
+    /* Shows 1 card, but takes up 85% width so the next card peeks in */
+    flex: 0 0 85vw; 
   }
 }
