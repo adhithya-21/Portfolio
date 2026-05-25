@@ -1,11 +1,12 @@
 import './Experience.css';
 import { experience, education } from '../../data/experience.js';
+import { Paperclip } from 'lucide-react';
 
 function Experience() {
   return (
     <section id="education" className="experience-section">
       <div className="container">
-         <h1 className="section-title">Education</h1>
+         <h1 className="section-title"><h>Education</h></h1>
          <h2>My academic background and professional qualifications.</h2>
          
         <div className="timeline-grid">
@@ -29,7 +30,21 @@ function Experience() {
             <div className="scroll-container">
               {experience.map((item) => (
                 <div key={item.title} className="timeline-item card">
-                  <h4>{item.title}</h4>
+                  <div className="timeline-header">
+                    <h4>{item.title}</h4>
+                    {item.certificateLink && (
+                      <a 
+                        href={item.certificateLink} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="certificate-link"
+                        title="View Certificate"
+                        aria-label={`View ${item.title} Certificate`}
+                      >
+                        <Paperclip size={18} />
+                      </a>
+                    )}
+                  </div>
                   <p className="timeline-company">{item.institution}</p>
                   <p className="timeline-timeframe">{item.timeframe}</p>
                   <p>{item.description}</p>

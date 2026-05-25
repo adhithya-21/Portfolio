@@ -102,22 +102,65 @@
 }
 
 /* --- DARK MODE (Matches your image) --- */
-@media (prefers-color-scheme: dark) {
-  .timeline-item.card {
-    background-color: #0f172a; /* Dark blue/slate background from the image */
-    color: #e2e8f0; /* Light gray text for readability */
-    border: 1px solid #1e293b; /* Subtle dark border */
-  }
+[data-theme='dark'] .timeline-item.card {
+  background-color: #0f172a; /* Dark blue/slate background from the image */
+  color: #e2e8f0; /* Light gray text for readability */
+  border: 1px solid #1e293b; /* Subtle dark border */
+}
 
-  .timeline-item h4 {
-    color: #ffffff; /* Pure white heading like "Frontend" */
-  }
+[data-theme='dark'] .timeline-item h4 {
+  color: #ffffff; /* Pure white heading like "Frontend" */
+}
 
-  .timeline-timeframe {
-    color: #94a3b8; /* Muted gray for the date */
-  }
+[data-theme='dark'] .timeline-timeframe {
+  color: #94a3b8; /* Muted gray for the date */
+}
 
-  .timeline-company {
-    color: #38bdf8; /* Lighter blue accent to pop on the dark background */
-  }
+[data-theme='dark'] .timeline-company {
+  color: #38bdf8; /* Lighter blue accent to pop on the dark background */
+}
+
+/* --- TIMELINE HEADER & CERTIFICATE LINK --- */
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+}
+
+.timeline-header h4 {
+  margin: 0 !important;
+  flex: 1;
+}
+
+.certificate-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent, #0056b3);
+  background-color: rgba(0, 86, 179, 0.08);
+  padding: 0.4rem;
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.certificate-link:hover {
+  background-color: var(--accent, #0056b3);
+  color: #ffffff;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 86, 179, 0.2);
+}
+
+[data-theme='dark'] .certificate-link {
+  color: #38bdf8;
+  background-color: rgba(56, 189, 248, 0.1);
+}
+
+[data-theme='dark'] .certificate-link:hover {
+  background-color: #38bdf8;
+  color: #0f172a;
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
 }

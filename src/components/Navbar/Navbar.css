@@ -9,7 +9,7 @@
   --toggle-shadow: rgba(178, 147, 94, 0.18);
 }
 
-[data-theme='dark'] :root {
+[data-theme='dark'] {
   --muted: #94a3b8;
   --text: #f1f5f9;
   --border: rgba(255, 255, 255, 0.06);
