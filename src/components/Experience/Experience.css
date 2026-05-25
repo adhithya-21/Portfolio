@@ -100,3 +100,24 @@
     padding-right: 0;
   }
 }
+
+/* --- DARK MODE (Matches your image) --- */
+@media (prefers-color-scheme: dark) {
+  .timeline-item.card {
+    background-color: #0f172a; /* Dark blue/slate background from the image */
+    color: #e2e8f0; /* Light gray text for readability */
+    border: 1px solid #1e293b; /* Subtle dark border */
+  }
+
+  .timeline-item h4 {
+    color: #ffffff; /* Pure white heading like "Frontend" */
+  }
+
+  .timeline-timeframe {
+    color: #94a3b8; /* Muted gray for the date */
+  }
+
+  .timeline-company {
+    color: #38bdf8; /* Lighter blue accent to pop on the dark background */
+  }
+}

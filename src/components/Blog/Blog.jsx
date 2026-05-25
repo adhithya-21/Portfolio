@@ -7,7 +7,7 @@ function Blog() {
     <section id="blog" className="blog-section">
       <div className="container">
         {/* Fixed nested h1 tags here */}
-        <h1 className="section-title">Blogs</h1>
+        <h1 className="section-title"><h1>Blogs</h1></h1>
         <h2>A collection of my technical blog posts and insights.</h2>
         <div className="blog-grid">
           {blogs.map((blog) => (
