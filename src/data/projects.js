@@ -6,6 +6,13 @@ export const projects = [
     github: 'https://github.com/Lochithya/ReserveX',
   
   },
+   {
+    title: 'ProjectSphere - Project Management Tool',
+    description: 'Developed ProjectSphere, a full-stack web application for managing projects and tasks. The system enables teams to collaborate effectively, track progress, and manage resources efficiently while providing administrators with a centralized dashboard for project oversight.',
+    tech: ['HTML', 'CSS', 'MongoDB', 'Node.js', 'React', 'Express.js', 'Axios','Session-based Authentication','MVC Architecture'],
+    github: 'https://github.com/adhithya-21/ProjectSphere-backend',
+  
+  },
   {
     title: 'Food Waste Analysis Dashboard',
     description: 'The dashboard analyzes food waste, sales performance, and operational inefficiencies using Power BI. The project focuses on data cleaning, transformation, data modeling, DAX calculations, and interactive dashboard visualization to generate business insights and support decision-making.',
